@@ -7,7 +7,7 @@ import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 /**
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- *
+ * 模版类
  * BeanDefinition 注册表接口
  */
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
@@ -18,8 +18,9 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
         if (bean != null) {
             return bean;
         }
-
+        // 如果这个要获取的bean不存在，就先去获取 beanDefinition
         BeanDefinition beanDefinition = getBeanDefinition(name);
+        // 这里的根据 定义信息 创建bean的方法 由 AbstractAutowireCapableBeanFactory 实现了。
         return createBean(name, beanDefinition);
     }
 

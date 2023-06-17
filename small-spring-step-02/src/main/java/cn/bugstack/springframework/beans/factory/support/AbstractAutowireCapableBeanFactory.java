@@ -10,13 +10,16 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
     @Override
     protected Object createBean(String beanName, BeanDefinition beanDefinition) throws BeansException {
+        // 预留结果字段 bean
         Object bean;
         try {
+            // 实力化bean-反射
             bean = beanDefinition.getBeanClass().newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
             throw new BeansException("Instantiation of bean failed", e);
         }
 
+        // bean放入到容器中
         addSingleton(beanName, bean);
         return bean;
     }

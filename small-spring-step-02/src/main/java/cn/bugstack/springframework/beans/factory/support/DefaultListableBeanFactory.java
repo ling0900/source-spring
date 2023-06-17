@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 主要是对 beanDefinition 进行获取和注册
  */
 public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry {
 
