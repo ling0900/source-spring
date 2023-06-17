@@ -19,20 +19,31 @@ import java.io.InputStream;
 
 /**
  * Bean definition reader for XML bean definitions.
- *
- *
- *
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
  */
 public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
+    /**
+     * Instantiates a new Xml bean definition reader.
+     *
+     * @param registry the registry
+     */
     public XmlBeanDefinitionReader(BeanDefinitionRegistry registry) {
         super(registry);
     }
 
+    /**
+     * Instantiates a new Xml bean definition reader.
+     *
+     * @param registry       the registry
+     * @param resourceLoader the resource loader
+     */
     public XmlBeanDefinitionReader(BeanDefinitionRegistry registry, ResourceLoader resourceLoader) {
         super(registry, resourceLoader);
     }
@@ -60,6 +71,12 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         loadBeanDefinitions(resource);
     }
 
+    /**
+     * Do load bean definitions.
+     * 将流--》注册 BeanDefinition
+     * @param inputStream the input stream
+     * @throws ClassNotFoundException the class not found exception
+     */
     protected void doLoadBeanDefinitions(InputStream inputStream) throws ClassNotFoundException {
         Document doc = XmlUtil.readXML(inputStream);
         Element root = doc.getDocumentElement();
