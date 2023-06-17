@@ -11,6 +11,9 @@ import org.junit.Test;
  */
 public class ApiTest {
 
+    /**
+     * Test bean factory.
+     */
     @Test
     public void test_BeanFactory(){
         // 1.初始化 BeanFactory

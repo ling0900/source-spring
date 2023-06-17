@@ -13,7 +13,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         // 预留结果字段 bean
         Object bean;
         try {
-            // 实力化bean-反射
+            // 实力化bean-反射：这里有限制：无参构造器
             bean = beanDefinition.getBeanClass().newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
             throw new BeansException("Instantiation of bean failed", e);
