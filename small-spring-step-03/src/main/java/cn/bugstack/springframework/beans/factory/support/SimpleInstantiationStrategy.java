@@ -13,10 +13,13 @@ public class SimpleInstantiationStrategy implements InstantiationStrategy {
 
     @Override
     public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args) throws BeansException {
+        // 获取class信息
         Class clazz = beanDefinition.getBeanClass();
         try {
+            // 有参数
             if (null != ctor) {
                 return clazz.getDeclaredConstructor(ctor.getParameterTypes()).newInstance(args);
+                // 无参数
             } else {
                 return clazz.getDeclaredConstructor().newInstance();
             }

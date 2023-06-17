@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
  */
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
 
+    // 直接写死了
     private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
 
     @Override
@@ -28,6 +29,14 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return bean;
     }
 
+    /**
+     * Create bean instance object.
+     *
+     * @param beanDefinition the bean definition
+     * @param beanName       the bean name
+     * @param args           the args
+     * @return the object
+     */
     protected Object createBeanInstance(BeanDefinition beanDefinition, String beanName, Object[] args) {
         Constructor constructorToUse = null;
         Class<?> beanClass = beanDefinition.getBeanClass();
@@ -38,13 +47,24 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
                 break;
             }
         }
+        // 根据策略模式选择创建对象的方式：jdk or cglib
         return getInstantiationStrategy().instantiate(beanDefinition, beanName, constructorToUse, args);
     }
 
+    /**
+     * Gets instantiation strategy.
+     *
+     * @return the instantiation strategy
+     */
     public InstantiationStrategy getInstantiationStrategy() {
         return instantiationStrategy;
     }
 
+    /**
+     * Sets instantiation strategy.
+     *
+     * @param instantiationStrategy the instantiation strategy
+     */
     public void setInstantiationStrategy(InstantiationStrategy instantiationStrategy) {
         this.instantiationStrategy = instantiationStrategy;
     }

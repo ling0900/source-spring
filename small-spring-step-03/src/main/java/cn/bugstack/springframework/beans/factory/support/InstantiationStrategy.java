@@ -12,6 +12,16 @@ import java.lang.reflect.Constructor;
  */
 public interface InstantiationStrategy {
 
+    /**
+     * Instantiate object.实力化一个对象
+     *
+     * @param beanDefinition the bean definition
+     * @param beanName       the bean name
+     * @param ctor           the ctor
+     * @param args           the args
+     * @return the object
+     * @throws BeansException the beans exception
+     */
     Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args) throws BeansException;
 
 }
